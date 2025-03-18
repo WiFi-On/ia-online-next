@@ -1,0 +1,77 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 10% auto;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.main h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.inputText,
+.inputPassword {
+  font-size: 16px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.inputText {
+  padding: 10px 20px;
+}
+.inputPassword {
+  background-color: white;
+  padding: 5px 18px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #7ed956;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.links p {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.links p span {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.links p span:hover {
+  text-decoration: underline;
+  color: #0056b3;
+  transition: color 0.1s ease-in-out;
+}
+
+@media screen and (max-width: 425px) {
+  .main {
+    margin: 20% 4%;
+    padding: 20px;
+  }
+}

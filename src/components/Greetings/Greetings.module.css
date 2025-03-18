@@ -1,0 +1,137 @@
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 10% 50px 10%;
+  height: 70vh;
+
+  background-image: url("/imgs/Greetings/greetings.webp");
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.text {
+  animation: fadeInDrop 1s ease-out;
+}
+
+.main h1 {
+  font-size: 100px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.button {
+  padding: 20px 40px;
+  font-size: 17px;
+  border-radius: 50px;
+}
+
+.main h1 span {
+  margin-top: 0.2em;
+  color: #7ed956;
+  display: block;
+}
+
+.main h4 {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+@keyframes fadeInDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .main {
+    justify-content: flex-start;
+    align-items: start;
+    padding-top: 50px;
+  }
+
+  .main h1 {
+    font-size: 8vw;
+  }
+
+  .main h4 {
+    font-size: 2.5vw;
+  }
+
+  .button {
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 50px;
+    width: 100%;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 768px) {
+  .text {
+    width: 100%;
+  }
+
+  .main {
+    height: 70vh;
+    margin: 30px 10%;
+    justify-content: space-between;
+  }
+
+  .main h1 {
+    font-size: 10vw;
+    text-align: center;
+  }
+
+  .main h4 {
+    display: none;
+  }
+
+  .button {
+    padding: 13px 26px;
+    font-size: 16px;
+    border-radius: 30px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    height: 55vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    height: 50vh;
+  }
+}
+@media screen and (max-width: 400px) {
+  .main {
+    height: 45vh;
+  }
+}
+@media screen and (max-width: 350px) {
+  .main {
+    height: 40vh;
+  }
+}

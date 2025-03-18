@@ -1,0 +1,36 @@
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  display: none; /* Скрываем стандартный чекбокс */
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor; /* Использует цвет текста */
+  border-radius: 4px; /* Округлые углы */
+  position: relative;
+  margin-right: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.checkboxInput:checked + .checkbox {
+  background-color: #007bff; /* Цвет фона, когда чекбокс отмечен */
+  border-color: #007bff; /* Цвет рамки при отмеченном состоянии */
+}
+
+.checkboxInput:checked + .checkbox::after {
+  content: "";
+  position: absolute;
+  top: 50%; /* Положение по вертикали */
+  left: 50%; /* Положение по горизонтали */
+  width: 4px; /* Ширина галочки */
+  height: 6px; /* Высота галочки */
+  border: solid white; /* Цвет галочки */
+  border-width: 0 2px 2px 0; /* Формируем галочку */
+  transform: translate(-50%, -50%) rotate(45deg); /* Центрируем и поворачиваем галочку */
+}

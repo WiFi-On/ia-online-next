@@ -1,0 +1,15 @@
+.main {
+  border: 1px solid #ced4da;
+  transition: box-shadow 0.15s ease-in-out; /* Плавный переход */
+  box-sizing: border-box;
+  width: 100%;
+
+  font-weight: 500;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+.main:focus {
+  box-shadow: 0 0 8px #7ed956; /* Тень при фокусе */
+  outline: none; /* Убираем стандартный outline */
+}

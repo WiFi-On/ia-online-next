@@ -1,0 +1,46 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80px 10%;
+}
+
+.main h2 {
+  text-align: center;
+  font-size: 60px;
+  font-weight: 400;
+}
+
+.main span {
+  font-weight: 700;
+}
+
+.partners {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+  gap: 10px;
+  justify-items: center; /* Выравнивание по центру */
+}
+
+.partners img {
+  width: 150px; /* Фиксированная ширина */
+  height: 100px; /* Фиксированная высота */
+  object-fit: contain; /* Или 'cover' для полного заполнения */
+}
+@media screen and (max-width: 768px) {
+  .partners {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .main h2 {
+    font-size: 56px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .main h2 {
+    font-size: 40px;
+  }
+  .partners img {
+    width: 100px; /* Фиксированная ширина */
+    height: 75px; /* Фиксированная высота */
+  }
+}

@@ -1,0 +1,65 @@
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  margin: 30px auto 0 auto;
+  max-width: 1900px;
+}
+
+.userInfo {
+  display: flex;
+  width: 60%;
+  gap: 20px;
+}
+
+.urlAndExit,
+.navs,
+.reportAndNavs,
+.statisticsAndUserInfo {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+@media screen and (max-width: 1920px) {
+  .main {
+    margin: 30px 3%;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .main {
+    margin: 30px 3%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .statisticsAndUserInfo,
+  .reportAndNavs {
+    flex-direction: column;
+  }
+  .userInfo {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+  }
+  .reportAndNavs,
+  .navs {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .userInfo,
+  .navs,
+  .urlAndExit {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 450px) {
+  .main,
+  .statisticsAndUserInfo,
+  .userInfo,
+  .reportAndNavs,
+  .navs {
+    gap: 15px;
+  }
+}

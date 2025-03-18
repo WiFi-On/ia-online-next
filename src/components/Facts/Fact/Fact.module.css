@@ -1,0 +1,75 @@
+.main {
+  display: flex;
+  padding: 0 20px;
+  border-top: 1px solid #e5e5e5;
+  position: relative;
+}
+
+.main div {
+  width: 50%;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 60px;
+  font-weight: 700;
+  width: 100%;
+  text-align: left;
+}
+
+.textWithDot {
+  position: relative;
+  padding-left: 20px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.main p {
+  width: 70%;
+  line-height: 1.6;
+}
+
+.textWithDot::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #7ed956;
+}
+@media screen and (max-width: 1280px) {
+  .title {
+    font-size: 4vh;
+  }
+
+  .main p {
+    width: 70%;
+    line-height: 1.6;
+  }
+}
+@media screen and (max-width: 768px) {
+  .textWithDot::before {
+    display: none;
+  }
+  .main {
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+  .main p {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  .main div {
+    width: 100%;
+  }
+  .title {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}

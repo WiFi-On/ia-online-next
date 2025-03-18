@@ -1,0 +1,120 @@
+.main {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 2px solid #7ed956;
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 20px;
+}
+
+.text {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+}
+
+.text div {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.text p {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.text span {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.statusAndLevel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.statusAndLevel p {
+  font-weight: 500;
+  margin: 0;
+  font-size: 24px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+}
+
+@media screen and (max-width: 1350px) {
+  .main {
+    padding: 15px 30px;
+  }
+
+  .text {
+    gap: 10px;
+  }
+
+  .text div {
+    gap: 5px;
+  }
+
+  .text p {
+    font-size: 20px;
+  }
+
+  .text span {
+    font-size: 18px;
+  }
+
+  .statusAndLevel {
+    gap: 5px;
+  }
+
+  .statusAndLevel p {
+    font-size: 20px;
+    padding: 5px 10px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .main {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .statusAndLevel {
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 450px) {
+  .main {
+    padding: 10px 20px;
+  }
+
+  .text {
+    gap: 5px;
+  }
+
+  .text p {
+    font-size: 18px;
+  }
+
+  .text span {
+    font-size: 16px;
+  }
+
+  .statusAndLevel {
+    gap: 5px;
+  }
+
+  .statusAndLevel p {
+    font-size: 18px;
+    padding: 3px 6px;
+  }
+}

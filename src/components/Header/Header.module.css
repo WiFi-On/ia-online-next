@@ -1,0 +1,94 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Центрируем всё */
+  border-radius: 0 0 20px 20px;
+  background-color: white;
+  color: #333;
+  box-sizing: border-box;
+  height: 140px;
+  padding: 0 20px;
+  position: relative; /* Делаем родителем для абсолютного позиционирования */
+}
+
+.navLinks {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.navLinks a {
+  color: #333;
+  font-size: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  line-height: 1; /* Устанавливаем единичное межстрочное расстояние */
+}
+
+.navLinks a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* Прикрепляем подчеркивание к нижней части ссылки */
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #333;
+  transition: width 0.3s ease;
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+.navLinks .active::after {
+  width: 100%; /* Подчеркивание для активного элемента */
+  transition: none; /* Отключаем анимацию для активного элемента */
+}
+
+.navLinks .active:hover::after {
+  width: 100%; /* Убедимся, что подчеркивание не меняется при наведении на активный элемент */
+}
+
+.logo {
+  position: absolute;
+  left: 20px; /* Прижимаем к левому краю */
+  height: 120px;
+  object-fit: contain;
+}
+
+.logo img {
+  height: 100%;
+}
+
+@media screen and (max-width: 1350px) {
+  .navLinks {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    height: 100px;
+  }
+
+  .exit {
+    height: 45px;
+  }
+
+  .navLinks a {
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 730px) {
+  .main {
+    justify-content: flex-end;
+  }
+  .navLinks {
+    padding: 0px 50px 0 100px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .main {
+    display: none;
+  }
+}

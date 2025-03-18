@@ -1,0 +1,51 @@
+.main {
+  position: relative;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+}
+.input {
+  border: 1px solid #ced4da;
+  transition: box-shadow 0.15s ease-in-out; /* Плавный переход */
+  width: 100%;
+
+  font-weight: 500;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+.input:focus {
+  box-shadow: 0 0 8px #7ed956; /* Тень при фокусе */
+  outline: none; /* Убираем стандартный outline */
+}
+
+.list {
+  position: absolute;
+  margin-top: 5px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ced4da;
+  border-radius: 20px;
+
+  color: #333333;
+  overflow: hidden;
+  z-index: 10;
+
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.list div {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom: 1px solid #ced4da;
+}
+
+.list-active {
+  opacity: 1;
+  max-height: 600px; /* Достаточно, чтобы вместить все элементы */
+}

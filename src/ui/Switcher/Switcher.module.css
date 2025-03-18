@@ -1,0 +1,37 @@
+.switch {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.switchInput {
+  display: none; /* Скрываем стандартный input */
+}
+
+.switchSlider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc; /* Цвет неактивного состояния */
+  border-radius: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.switchSlider::before {
+  content: "";
+  position: absolute;
+
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Активное состояние */
+.switchInput:checked + .switchSlider {
+  background-color: #7ed956; /* Цвет активного состояния */
+}
+
+.switchInput:checked + .switchSlider::before {
+  transform: translateX(117%); /* Двигаем круг в право */
+}

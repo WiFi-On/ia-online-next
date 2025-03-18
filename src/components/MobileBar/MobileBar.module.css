@@ -1,0 +1,50 @@
+.main {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 10px 0px;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  background-color: white; /* или любой другой цвет фона */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* для тени */
+  z-index: 100; /* чтобы бар был поверх других элементов */
+}
+
+.main a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333; /* ��вет текста */
+  text-decoration: none; /* Убираем подчеркивание ссылок */
+  width: 33%;
+  box-sizing: border-box;
+}
+
+.main a span {
+  font-size: 2.5vw; /* Уменьшаем размер текста */
+  font-weight: 500;
+}
+
+.main svg {
+  width: 8vw;
+  height: 8vw;
+  flex-shrink: 0; /* Запрещаем сжимать иконки */
+}
+
+.unactive {
+  color: black; /* ��вет текста при наведении */
+}
+
+.active svg {
+  color: #7ed956;
+}
+@media screen and (max-width: 500px) {
+  .main {
+    display: flex;
+  }
+}

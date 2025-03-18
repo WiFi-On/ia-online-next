@@ -1,0 +1,62 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  background-color: rgb(255, 81, 81);
+  color: white;
+
+  width: 100%;
+  max-width: 35%;
+
+  padding: 20px 40px;
+  border-radius: 20px;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  box-sizing: border-box;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease-in-out, transform 0.2s;
+}
+
+.main:hover {
+  background-color: rgb(255, 100, 100);
+  transform: scale(1.02);
+}
+
+.main img {
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (max-width: 1350px) {
+  .main {
+    padding: 10px 20px;
+    font-size: 22px;
+  }
+
+  .main img {
+    width: 35px;
+    height: 35px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .main {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .main {
+    padding: 10px 20px;
+    font-size: 20px;
+  }
+
+  .main img {
+    width: 30px;
+    height: 30px;
+  }
+}

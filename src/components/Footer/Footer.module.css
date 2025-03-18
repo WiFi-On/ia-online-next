@@ -1,0 +1,35 @@
+.main {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 25px;
+  padding: 50px;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+}
+
+.main p {
+  color: white;
+  font-size: 14px;
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.links img {
+  height: 25px;
+  width: 25px;
+}
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+}

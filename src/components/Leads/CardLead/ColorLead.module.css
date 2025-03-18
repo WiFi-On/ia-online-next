@@ -1,0 +1,70 @@
+/* Цвета для бордера */
+.border_status_new {
+  border-color: #c1ff72;
+}
+.border_status_noContact {
+  border-color: #a6a6a6;
+}
+.border_status_pending {
+  border-color: #ff914d;
+}
+.border_status_scheduled {
+  border-color: #ffbd59;
+}
+.border_status_ready {
+  border-color: #7ed957;
+}
+.border_status_paid {
+  border-color: #00bf63;
+}
+.border_status_refusal {
+  border-color: #ff5757;
+}
+
+/* Цвета для фона */
+.background_status_new {
+  background-color: #c1ff72;
+}
+.background_status_noContact {
+  background-color: #a6a6a6;
+}
+.background_status_pending {
+  background-color: #ff914d;
+}
+.background_status_scheduled {
+  background-color: #ffbd59;
+}
+.background_status_ready {
+  background-color: #7ed957;
+}
+.background_status_paid {
+  background-color: #00bf63;
+}
+.background_status_refusal {
+  background-color: #ff5757;
+}
+/* Цвета для фона */
+.color_status_new {
+  color: #c1ff72;
+}
+.color_status_noContact {
+  color: #a6a6a6;
+}
+.color_status_pending {
+  color: #ff914d;
+}
+.color_status_scheduled {
+  color: #ffbd59;
+}
+.color_status_ready {
+  color: #7ed957;
+}
+.color_status_paid {
+  color: #00bf63;
+}
+.color_status_refusal {
+  color: #ff5757;
+}
+.color_status_default {
+  color: #545454;
+}

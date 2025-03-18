@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 80px 12%;
+}
+
+.main h2 {
+  font-size: 53px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.main p {
+  font-size: 35px;
+  max-width: 850px;
+  margin: 0;
+}
+
+.main span {
+  font-weight: 700;
+}
+
+.main p:first-of-type span {
+  color: #7ed956;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    gap: 10px;
+  }
+
+  .main h2 {
+    font-size: 7vw;
+    font-weight: 700;
+  }
+
+  .main p {
+    font-size: 5vw;
+    max-width: 850px;
+  }
+}

@@ -1,0 +1,114 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.calendar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.calendarSize {
+  font-size: 20px;
+}
+
+.span {
+  font-size: 20px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.selectSize {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.arrowSize {
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid #333333;
+  border-bottom: 2px solid #333333;
+}
+
+.listSize {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.services {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svgSize svg {
+  height: 50px;
+  width: 50px;
+}
+
+.search {
+  box-sizing: border-box;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 610px) {
+  .span {
+    font-size: 16px;
+  }
+
+  .input {
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
+  .calendarSize {
+    font-size: 16px;
+  }
+
+  .svgSize svg {
+    height: 35px;
+    width: 35px;
+  }
+
+  .selectSize {
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
+  .arrowSize {
+    width: 6px;
+    height: 6px;
+    border-left: 2px solid #333333;
+    border-bottom: 2px solid #333333;
+  }
+
+  .listSize {
+    font-weight: 500;
+    font-size: 16px;
+  }
+}

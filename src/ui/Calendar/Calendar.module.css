@@ -1,0 +1,36 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+
+  position: relative;
+}
+
+.toggle {
+  border-radius: 20px;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333333;
+
+  width: auto;
+
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+
+.reactCalendar {
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, height 0.3s ease, visibility 0s ease 0.3s;
+}
+
+.reactCalendarActive {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}

@@ -1,0 +1,26 @@
+.button {
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+  font-family: "Montserrat", sans-serif;
+}
+
+.green {
+  background-color: #7ed956;
+}
+
+.green:hover {
+  background-color: #6ac147; /* Немного темнее при наведении */
+  transform: scale(1.02); /* Легкое увеличение */
+}
+
+.black {
+  background-color: black;
+}
+
+.black:hover {
+  background-color: #333; /* Серый оттенок при наведении */
+  transform: scale(1.02);
+}

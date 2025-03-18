@@ -1,0 +1,43 @@
+.main {
+  margin: 80px 10%;
+}
+
+.bottom {
+  display: flex;
+}
+
+.main h2 {
+  font-size: 60px;
+  font-weight: 500;
+}
+
+.main span {
+  font-weight: 700;
+  display: block;
+}
+
+.line {
+  width: 100px;
+  height: 2px;
+  background-color: #7ed956;
+}
+.text p {
+  position: relative; /* Установите относительное позиционирование */
+  color: #777;
+}
+
+.questions {
+  border-bottom: 1px solid #e5e5e5;
+}
+@media screen and (max-width: 768px) {
+  .main {
+    margin: 0 5%;
+  }
+  .bottom {
+    flex-direction: column;
+  }
+  .main h2 {
+    font-size: 40px;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,65 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+
+  width: 50%;
+
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 20px;
+  box-sizing: border-box;
+
+  font-size: 22px;
+}
+
+.main h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 26px;
+}
+
+.elems {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  width: 100%;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1350px) {
+  .main {
+    padding: 15px 30px;
+  }
+  .main h2 {
+    font-size: 24px;
+  }
+  .button {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .main {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .main {
+    padding: 10px 20px;
+  }
+  .main h2 {
+    font-size: 22px;
+  }
+  .button {
+    padding: 8px 16px;
+  }
+}

@@ -1,0 +1,30 @@
+.main {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #007bff;
+  gap: 10px; /* Отступ между картинкой и текстом */
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out; /* Плавный переход */
+
+  font-family: "Montserrat", sans-serif;
+}
+
+.main:hover {
+  background-color: #0056b3;
+}
+
+.main img {
+  height: 25px;
+}
+
+.main span {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  flex-grow: 1; /* Заполняет оставшееся пространство */
+}
