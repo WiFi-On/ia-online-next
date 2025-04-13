@@ -22,6 +22,7 @@ const LeadsModule = () => {
   const [limit] = useState<number>(10);
   const [offset, setOffset] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const [filtersChanged, setFiltersChanged] = useState(false);
 
   const lastElement = useRef<HTMLDivElement | null>(null);
   const observer = useRef<IntersectionObserver | null>(null);
@@ -62,7 +63,6 @@ const LeadsModule = () => {
 
   const getLeads = async () => {
     if (isLoading) return;
-
     setIsLoading(true);
 
     try {
@@ -119,17 +119,28 @@ const LeadsModule = () => {
     }
   };
 
-  // При изменении фильтров сбрасываем offset и данные
+  // При изменении фильтров сбрасываем offset, данные и триггерим загрузку
   useEffect(() => {
     setOffset(0);
     setLeads([]);
     setHasMore(true);
+    setFiltersChanged(true);
   }, [date, servicesState, search, selectedOption]);
 
-  // Подгрузка данных при изменении offset или фильтров
+  // Загрузка после сброса фильтров
   useEffect(() => {
-    getLeads();
-  }, [offset, date, servicesState, search, selectedOption]);
+    if (filtersChanged) {
+      getLeads();
+      setFiltersChanged(false);
+    }
+  }, [filtersChanged]);
+
+  // Подгрузка новых данных при скролле
+  useEffect(() => {
+    if (offset > 0) {
+      getLeads();
+    }
+  }, [offset]);
 
   // Интерсекшн обсервер
   useEffect(() => {
