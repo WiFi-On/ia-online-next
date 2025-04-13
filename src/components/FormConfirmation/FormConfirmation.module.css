@@ -1,0 +1,41 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 10% auto;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.main h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #7ed956;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.text {
+  margin: 0;
+  text-align: center;
+  color: black;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 425px) {
+  .main {
+    margin: 20% 4%;
+    padding: 20px;
+  }
+}

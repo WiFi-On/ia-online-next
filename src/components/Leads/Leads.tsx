@@ -1,9 +1,11 @@
-import React from "react";
-import styles from "./Leads.module.css";
-import CardLead from "./CardLead/CardLead";
-import { LeadsProps } from "@/interfaces/Lead/Lead.interface";
+import React from 'react';
+import styles from './Leads.module.css';
+import CardLead from './CardLead/CardLead';
+import { LeadsProps } from '@/interfaces/Lead/Lead.interface';
 
 const Leads = ({ leads }: LeadsProps) => {
+  console.log(leads);
+
   return (
     <div className={styles.leads}>
       {leads.map((lead) => (

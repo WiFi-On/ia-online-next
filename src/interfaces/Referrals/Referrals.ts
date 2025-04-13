@@ -2,8 +2,7 @@ export interface ReferralProps {
   name: string;
   phone: string;
   city: string;
-  level: string;
-  status: string;
+  active: boolean;
 }
 
 export interface Referrals {

@@ -1,7 +1,6 @@
-import styles from "./Fact.module.css";
-import PropsFact from "./props.Fact";
+import styles from './Fact.module.css';
 
-const Fact = ({ desc, title }: PropsFact) => {
+const Fact = ({ desc, title }: { desc: string; title: string }) => {
   return (
     <div className={styles.main}>
       <div className={styles.desc}>

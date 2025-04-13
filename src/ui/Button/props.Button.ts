@@ -1,8 +1,8 @@
 interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
-  color: "green" | "black";
+  color: 'green' | 'black';
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default PropsButton;

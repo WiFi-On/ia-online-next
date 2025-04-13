@@ -36,6 +36,13 @@
   font-weight: 500;
 }
 
+.error {
+  margin: 0;
+  text-align: center;
+  color: black;
+  font-size: 1rem;
+}
+
 @media screen and (max-width: 1350px) {
   .main {
     padding: 15px 30px;

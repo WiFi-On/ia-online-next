@@ -20,6 +20,9 @@
 .border_status_refusal {
   border-color: #ff5757;
 }
+.border_status_appointment_control {
+  border-color: #686aff;
+}
 
 /* Цвета для фона */
 .background_status_new {
@@ -42,6 +45,9 @@
 }
 .background_status_refusal {
   background-color: #ff5757;
+}
+.background_status_appointment_control {
+  background-color: #686aff;
 }
 /* Цвета для фона */
 .color_status_new {
@@ -67,4 +73,7 @@
 }
 .color_status_default {
   color: #545454;
+}
+.color_status_appointment_control {
+  color: #686aff;
 }

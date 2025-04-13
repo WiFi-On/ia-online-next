@@ -1,12 +1,9 @@
-import styles from "./Referral.module.css";
-import color from "./ReferralColors.module.css";
-import { ReferralProps } from "@/interfaces/Referrals/Referrals";
-import { getStatusText, getLevelText } from "@/utils/getText";
+import styles from './Referral.module.css';
+import color from './ReferralColors.module.css';
+import { ReferralProps } from '@/interfaces/Referrals/Referrals';
 
-const Referral = ({ name, city, phone, status, level }: ReferralProps) => {
-  const backgroundColorStatus =
-    color["background_color_" + status.toLowerCase()];
-  const backgroundColorLevel = color["background_color_" + level.toLowerCase()];
+const Referral = ({ name, city, phone, active }: ReferralProps) => {
+  const backgroundColorActive = color['background_color_' + (active ?? true ? 'active' : 'unactive')];
 
   return (
     <div className={styles.main}>
@@ -26,12 +23,7 @@ const Referral = ({ name, city, phone, status, level }: ReferralProps) => {
       </div>
 
       <div className={styles.statusAndLevel}>
-        <p className={styles.level + " " + backgroundColorLevel}>
-          {getLevelText(level)}
-        </p>
-        <p className={styles.status + " " + backgroundColorStatus}>
-          {getStatusText(status)}
-        </p>
+        <p className={styles.status + ' ' + backgroundColorActive}>{active ?? true ? 'Активный' : 'Неактивный'}</p>
       </div>
     </div>
   );

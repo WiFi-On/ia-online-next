@@ -7,24 +7,22 @@ export interface LeadsProps {
 }
 
 export interface Lead {
-  name: string;
+  id: number;
+  userId: number;
+  fio: string;
   address: string;
-  phone: string;
-  comments: string[];
-  status:
-    | { id: 0; name: "new"; ru_name: "Новая заявка" }
-    | { id: 1; name: "noContact"; ru_name: "Недозвон" }
-    | { id: 2; name: "pending"; ru_name: "Отложена" }
-    | { id: 3; name: "scheduled"; ru_name: "Назначена" }
-    | { id: 4; name: "ready"; ru_name: "Готова" }
-    | { id: 5; name: "paid"; ru_name: "Оплачено" }
-    | { id: 6; name: "refusal"; ru_name: "Отказ" }
-    | Status;
-  services: number[];
-  price?: Price;
-  dateAndTimeCreated: string;
-  datePayment?: string;
-  dateReady?: string;
+  status_id: number;
+  phone_number: string;
+  comments: string[] | null;
+  is_internet: boolean;
+  is_cleaning: boolean;
+  is_shipping: boolean;
+  reward_internet: number;
+  reward_cleaning: number;
+  reward_shipping: number;
+  created_at: string | null;
+  completed_at: string | null;
+  payment_at: string | null;
 }
 
 export interface LeadService extends Lead {
@@ -37,9 +35,9 @@ export interface Status {
   ru_name: string;
 }
 
-interface Price {
-  internet?: number;
-  cleaning?: number;
-  shipping?: number;
-  total: number;
-}
+// interface Price {
+//   internet?: number;
+//   cleaning?: number;
+//   shipping?: number;
+//   total: number;
+// }

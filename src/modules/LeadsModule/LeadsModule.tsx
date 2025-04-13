@@ -1,148 +1,41 @@
-"use client";
+'use client';
 
-import styles from "./LeadsModule.module.css";
+import styles from './LeadsModule.module.css';
 
-import Leads from "@/components/Leads/Leads";
-import Filter from "@/components/Filter/Filter";
+import Leads from '@/components/Leads/Leads';
+import Filter from '@/components/Filter/Filter';
 
-import { Option } from "@/interfaces/Filter/Filter.intreface";
-import { LeadService } from "@/interfaces/Lead/Lead.interface";
-import { Value } from "@/interfaces/Calendar/Calendar.intreface";
+import { Option } from '@/interfaces/Filter/Filter.intreface';
+import { LeadService } from '@/interfaces/Lead/Lead.interface';
+import { Value } from '@/interfaces/Calendar/Calendar.intreface';
 
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useState, useEffect, useRef } from 'react';
 
-// TODO: добавить пагинацию и мемеизацию
 const LeadsModule = () => {
-  const [date, setDate] = useState<Value>([new Date(), new Date()]);
+  const router = useRouter();
+  const [date, setDate] = useState<Value>([new Date('2025-01-01'), null]);
   const [servicesState, setServicesState] = useState<number[]>([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
-  const options: Option[] = [
-    { id: 0, value: "new", name: "Новая заявка" },
-    { id: 1, value: "noContact", name: "Недозвон" },
-    { id: 2, value: "pending", name: "Отложена" },
-    { id: 3, value: "scheduled", name: "Назначена" },
-    { id: 4, value: "ready", name: "Готова" },
-    { id: 5, value: "paid", name: "Оплачено" },
-    { id: 6, value: "refusal", name: "Отказ" },
-  ];
-  const leads: LeadService[] = [
-    {
-      id: 1,
-      name: "Шеламыдов Алексей Александрович",
-      address:
-        "Московская обл, г Красногорск, деревня Глухово, ул Рублевское предместье, д 6 к 3, кв 64",
-      phone: "+7 (555) 555-55-55",
-      comments: [
-        "Клиент интересуется скидками jasdjasdklaskldjkasljd jasdjksdj jsjd ajsdjkasdkjaskdj jasdj",
-        "Просил перезвонить asdasdasd aaaasd ssd sssd sadssasd после 18:00",
-      ],
-      status: { id: 0, name: "new", ru_name: "Новая заявка" },
-      services: [0, 1],
-      price: {
-        internet: 2000,
-        cleaning: 6000,
-        shipping: 4000,
-        total: 12000,
-      },
-      dateAndTimeCreated: "2022-01-10T18:00:00",
-    },
-    {
-      id: 2,
-      name: "Мария Смирнова",
-      address: "пр. Победы, д. 9, офис 302, Санкт-Петербург",
-      phone: "+7 (921) 678-90-12",
-      comments: ["Не берет трубку", "Оставлено голосовое сообщение"],
-      status: { id: 1, name: "noContact", ru_name: "Недозвон" },
-      services: [0],
-      price: {
-        internet: 2000,
-        cleaning: 6000,
-        shipping: 4000,
-        total: 12000,
-      },
-      dateAndTimeCreated: "2022-01-10T18:00:00",
-    },
-    {
-      id: 3,
-      name: "Владислав Петров",
-      address: "ул. Гоголя, д. 15, кв. 7, Казань",
-      phone: "+7 (987) 543-21-00",
-      comments: ["Просил перезвонить через неделю", "Интересовался гарантией"],
-      status: { id: 2, name: "pending", ru_name: "Отложена" },
-      services: [1],
-      price: {
-        internet: 2000,
-        cleaning: 6000,
-        shipping: 4000,
-        total: 12000,
-      },
-      dateAndTimeCreated: "2022-01-10T18:00:00",
-    },
-    {
-      id: 4,
-      name: "Екатерина Васильева",
-      address: "ул. Цветочная, д. 3, Сочи",
-      phone: "+7 (918) 345-67-22",
-      comments: [
-        "Подтвердила встречу на 14:30",
-        "Нужно уточнить детали договора",
-      ],
-      status: { id: 3, name: "scheduled", ru_name: "Назначена" },
-      services: [1, 2],
-      price: {
-        shipping: 4000,
-        total: 12000,
-      },
-      dateAndTimeCreated: "2022-01-10T18:00:00",
-    },
-    {
-      id: 5,
-      name: "Дмитрий Козлов",
-      address: "пр. Мира, д. 101, Новосибирск",
-      phone: "+7 (913) 222-11-44",
-      comments: [
-        "Заказал услугу с дополнительными опциями",
-        "Оформлен договор",
-      ],
-      status: { id: 4, name: "ready", ru_name: "Готова" },
-      services: [0, 2],
-      price: {
-        internet: 2000,
-        shipping: 4000,
-        total: 12000,
-      },
-      dateAndTimeCreated: "2022-01-10T18:00:00",
-    },
-    {
-      id: 6,
-      name: "Ольга Никитина",
-      address: "ул. Советская, д. 8, Воронеж",
-      phone: "+7 (920) 555-33-22",
-      comments: ["Оплата проведена", "Ждет подтверждение доставки"],
-      status: { id: 5, name: "paid", ru_name: "Оплачено" },
-      services: [0, 2],
-      price: {
-        internet: 2000,
+  const [leads, setLeads] = useState<LeadService[]>([]);
+  const [limit] = useState<number>(10);
+  const [offset, setOffset] = useState<number>(0);
+  const [hasMore, setHasMore] = useState<boolean>(true);
 
-        shipping: 4000,
-        total: 12000,
-      },
-      dateAndTimeCreated: "2022-01-10T18:00:00",
-    },
-    {
-      id: 7,
-      name: "Сергей Волков",
-      address: "пер. Зеленый, д. 6, Екатеринбург",
-      phone: "+7 (922) 111-88-99",
-      comments: [
-        "Передумал, выбрал другого поставщика",
-        "Просил удалить его из базы",
-      ],
-      status: { id: 6, name: "refusal", ru_name: "Отказ" },
-      services: [0, 2],
-      dateAndTimeCreated: "2022-01-10T18:00:00",
-    },
+  const lastElement = useRef<HTMLDivElement | null>(null);
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  const options: Option[] = [
+    { id: -1, value: 'all', name: 'Все' },
+    { id: 0, value: 'new', name: 'Новая заявка' },
+    { id: 1, value: 'noContact', name: 'Недозвон' },
+    { id: 2, value: 'pending', name: 'Отложена' },
+    { id: 3, value: 'scheduled', name: 'Назначена' },
+    { id: 4, value: 'ready', name: 'Готова' },
+    { id: 5, value: 'paid', name: 'Оплачено' },
+    { id: 6, value: 'refusal', name: 'Отказ' },
+    { id: 7, value: 'appointment_control', name: 'Контроль назначения' },
   ];
 
   const handleDateChange = (newDate: Value) => {
@@ -151,9 +44,7 @@ const LeadsModule = () => {
 
   const handleServicesChange = (newServices: number) => {
     if (servicesState.includes(newServices)) {
-      setServicesState(
-        servicesState.filter((service) => service !== newServices)
-      );
+      setServicesState(servicesState.filter((service) => service !== newServices));
     } else {
       setServicesState([...servicesState, newServices]);
     }
@@ -166,6 +57,96 @@ const LeadsModule = () => {
   const handleOptionChange = (option: Option) => {
     setSelectedOption(option);
   };
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getLeads = async () => {
+    if (isLoading) return;
+
+    setIsLoading(true);
+
+    try {
+      let start_date = '';
+      let end_date = '';
+
+      if (Array.isArray(date)) {
+        start_date = date[0] ? date[0].toISOString().split('T')[0] : '';
+        end_date = date[1] ? date[1].toISOString().split('T')[0] : '';
+      } else if (date instanceof Date) {
+        start_date = date.toISOString().split('T')[0];
+        end_date = date.toISOString().split('T')[0];
+      }
+
+      const query = new URLSearchParams({
+        start_date,
+        end_date,
+        services: servicesState.join(','),
+        ...(selectedOption && selectedOption.id !== -1 && { status_id: selectedOption.id.toString() }),
+        limit: limit.toString(),
+        offset: offset.toString(),
+        search,
+      }).toString();
+
+      const res = await fetch(`/api/leads?${query}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (res.status === 401) {
+        router.push('/login');
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch leads');
+      }
+
+      const data = await res.json();
+
+      if (offset === 0) {
+        setLeads(data.leads);
+      } else {
+        setLeads((prev) => [...prev, ...data.leads]);
+      }
+
+      if (data.leads.length < limit) {
+        setHasMore(false);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // При изменении фильтров сбрасываем offset и данные
+  useEffect(() => {
+    setOffset(0);
+    setLeads([]);
+    setHasMore(true);
+  }, [date, servicesState, search, selectedOption]);
+
+  // Подгрузка данных при изменении offset или фильтров
+  useEffect(() => {
+    getLeads();
+  }, [offset, date, servicesState, search, selectedOption]);
+
+  // Интерсекшн обсервер
+  useEffect(() => {
+    if (observer.current) observer.current.disconnect();
+
+    observer.current = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && hasMore) {
+        setOffset((prev) => prev + limit);
+      }
+    });
+
+    if (lastElement.current) {
+      observer.current.observe(lastElement.current);
+    }
+
+    return () => observer.current?.disconnect();
+  }, [leads, hasMore]);
 
   return (
     <div className={styles.main}>
@@ -181,6 +162,7 @@ const LeadsModule = () => {
         handleSearchChange={handleSearchChange}
       />
       <Leads leads={leads} />
+      <div ref={lastElement}></div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import InfoPartnerModule from "@/modules/InfoPartnerModule/InfoPartnerModule";
-import Header from "@/components/Header/Header";
-import MobileBar from "@/components/MobileBar/MobileBar";
+import InfoPartnerModule from '@/modules/InfoPartnerModule/InfoPartnerModule';
+import Header from '@/components/Header/Header';
+import MobileBar from '@/components/MobileBar/MobileBar';
 
 export async function generateStaticParams() {
   return [{}];
