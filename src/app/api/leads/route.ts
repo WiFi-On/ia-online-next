@@ -66,7 +66,7 @@ export async function GET(req: Request) {
       serialize('access_token', access_token, {
         httpOnly: true,
         secure: true,
-        sameSite: 'none',
+        sameSite: 'strict',
         path: '/',
         expires: new Date(payloadAccess.exp * 1000),
       })
@@ -76,7 +76,7 @@ export async function GET(req: Request) {
       serialize('refresh_token', refresh_token, {
         httpOnly: true,
         secure: true,
-        sameSite: 'none',
+        sameSite: 'strict',
         path: '/',
         expires: new Date(payloadRefresh.exp * 1000),
       })

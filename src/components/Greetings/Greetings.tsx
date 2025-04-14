@@ -18,7 +18,7 @@ const Greetings = (): JSX.Element => {
       </div>
 
       <div className={styles.buttons}>
-        <Button className={styles.button} color="green" onClick={() => redirect('/register')}>
+        <Button className={styles.button} color="green" onClick={() => redirect('/registration')}>
           Регистрация
         </Button>
         <Button className={styles.button} color="black" onClick={() => redirect('/login')}>

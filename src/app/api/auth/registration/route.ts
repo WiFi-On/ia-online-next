@@ -35,14 +35,16 @@ export async function POST(req: Request) {
 
   cookieStore.set('access_token', access_token, {
     httpOnly: true,
-    secure: false,
-    sameSite: 'none',
+    secure: true,
+    sameSite: 'strict',
+    path: '/',
     expires: payloadAccess.exp,
   });
   cookieStore.set('refresh_token', refresh_token, {
     httpOnly: true,
-    secure: false,
-    sameSite: 'none',
+    secure: true,
+    sameSite: 'strict',
+    path: '/',
     expires: payloadRefresh.exp,
   });
 
