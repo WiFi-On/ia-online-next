@@ -13,10 +13,8 @@ export async function middleware(req: NextRequest) {
 
   // Если защищён, но нет refresh_token — редирект на /login
   if (!refreshToken) {
-    console.log('нет токена, редирект');
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
-  console.log('токен есть, путь защищён — можно пробовать обновлять или пускать');
   return NextResponse.next();
 }

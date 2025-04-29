@@ -103,7 +103,7 @@ const FormRegistration = () => {
 
       <p className={styles.error}>{error}</p>
 
-      <Button onClick={() => console.log('Registration', formData)} className={styles.button} color="green" type="submit">
+      <Button className={styles.button} color="green" type="submit">
         Регистрация
       </Button>
 

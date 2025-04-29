@@ -36,6 +36,8 @@
   gap: 5px;
   overflow-y: auto;
   padding-right: 10px; /* Резервируем место для скроллбара */
+
+  scroll-behavior: smooth;
 }
 
 .card p {
@@ -73,6 +75,12 @@
   font-size: 18px;
 }
 
+.comments {
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .prices {
   display: flex;
   align-items: flex-end;

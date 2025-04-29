@@ -13,7 +13,7 @@ export interface Lead {
   address: string;
   status_id: number;
   phone_number: string;
-  comments: string[] | null;
+  comments: Comment[];
   is_internet: boolean;
   is_cleaning: boolean;
   is_shipping: boolean;
@@ -23,6 +23,13 @@ export interface Lead {
   created_at: string | null;
   completed_at: string | null;
   payment_at: string | null;
+}
+
+export interface Comment {
+  id: number;
+  is_manager: boolean;
+  text: string;
+  created_at: string;
 }
 
 export interface LeadService extends Lead {

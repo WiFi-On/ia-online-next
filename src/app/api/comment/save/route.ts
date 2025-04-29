@@ -1,41 +1,30 @@
 import { cookies } from 'next/headers';
 import { jwtDecode } from 'jwt-decode';
 import { serialize } from 'cookie';
-import { PayloadAccessI, PayloadRefreshI } from '../auth/payloads.interface';
+import { PayloadAccessI, PayloadRefreshI } from '../../auth/payloads.interface';
 
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
+export async function POST(req: Request) {
+  const { lead_id, comment } = await req.json();
   const cookieStore = await cookies();
 
   let access_token = cookieStore.get('access_token')?.value;
+  const refresh_token = cookieStore.get('refresh_token')?.value;
+
+  if (!refresh_token) {
+    return new Response(JSON.stringify({ message: 'No refresh token' }), { status: 401 });
+  }
 
   const api_address = process.env.LOCAL_API_URL;
+  const setCookieHeaders: string[] = [];
 
-  const start_date = searchParams.get('start_date');
-  const end_date = searchParams.get('end_date');
-  const services = searchParams.get('services')?.split(',').map(Number) || [];
-  const status_id = searchParams.get('status_id');
-  const search = searchParams.get('search');
-  const limit = searchParams.get('limit');
-  const offset = searchParams.get('offset');
-
-  const getLeadsRequest = async (token: string) => {
-    const queryParams: Record<string, string> = {};
-
-    if (limit) queryParams.limit = limit;
-    if (offset) queryParams.offset = offset;
-    if (start_date) queryParams.start_date = start_date;
-    if (end_date) queryParams.end_date = end_date;
-    if (status_id) queryParams.status_id = status_id;
-    if (search) queryParams.search = search;
-    if (services.includes(1)) queryParams.is_internet = 'true';
-    if (services.includes(2)) queryParams.is_cleaning = 'true';
-    if (services.includes(3)) queryParams.is_shipping = 'true';
-
-    const query = new URLSearchParams(queryParams).toString();
-
-    return await fetch(`${api_address}/leads?${query}`, {
-      method: 'GET',
+  // Функция отправки запроса на сохранение лида
+  const sendCommentRequest = async (token: string) => {
+    return await fetch(`${api_address}/comment/new`, {
+      method: 'POST',
+      body: JSON.stringify({
+        lead_id,
+        comment,
+      }),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -43,8 +32,7 @@ export async function GET(req: Request) {
     });
   };
 
-  const setCookieHeaders: string[] = [];
-
+  // Используем сервер для рефреша токенов
   const refreshTokensOnServer = async (): Promise<{ success: boolean; access_token?: string }> => {
     const res = await fetch(`${api_address}/auth/refresh`, {
       method: 'GET',
@@ -85,15 +73,19 @@ export async function GET(req: Request) {
     return { success: true, access_token };
   };
 
-  let response = await getLeadsRequest(access_token!);
+  // Первый запрос
+  let response = await sendCommentRequest(access_token!);
 
+  // Если access_token истёк — обновим токены и попробуем снова
   if (response.status === 401) {
-    const refreshed = await refreshTokensOnServer(); // ждем завершения получения нового токена
+    const refreshed = await refreshTokensOnServer();
+
     if (!refreshed.success || !refreshed.access_token) {
       return new Response(JSON.stringify({ message: 'Token refresh failed' }), { status: 401 });
     }
-    access_token = refreshed.access_token; // обновляем токен
-    response = await getLeadsRequest(access_token); // повторно отправляем запрос с новым токеном
+
+    access_token = refreshed.access_token;
+    response = await sendCommentRequest(access_token);
   }
 
   const responseData = await response.json();
@@ -107,7 +99,7 @@ export async function GET(req: Request) {
   const headers = new Headers();
   setCookieHeaders.forEach((cookie) => headers.append('Set-Cookie', cookie));
 
-  return new Response(JSON.stringify({ leads: responseData }), {
+  return new Response(JSON.stringify({ comment: responseData }), {
     status: 200,
     headers,
   });

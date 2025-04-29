@@ -68,8 +68,6 @@ export async function GET(req: Request) {
   const headers = new Headers();
   setCookieHeaders.forEach((cookie) => headers.append('Set-Cookie', cookie));
 
-  console.log(decodedAccessToken);
-
   return new Response(JSON.stringify({ decodedAccessToken }), {
     status: 200,
     headers,

@@ -3,8 +3,6 @@ import Referral from './Referral/Referral';
 import { referralI } from '@/app/api/auth/payloads.interface';
 
 const Referrals = ({ referrals }: { referrals: referralI[] }) => {
-  console.log(referrals);
-
   return (
     <div className={styles.main}>
       <div className={styles.text}>

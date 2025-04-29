@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: string;
+  children: ReactNode;
   color: 'green' | 'black';
   className?: string;
   onClick?: () => void;

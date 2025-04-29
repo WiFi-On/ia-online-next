@@ -3,6 +3,9 @@
 import styles from './CardLead.module.css';
 import colorStyles from './ColorLead.module.css';
 import { LeadProps } from '@/interfaces/Lead/Lead.interface';
+import CommentAdd from './CommentAdd/CommentAdd';
+import { useState, FormEvent, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const CardLead = ({ lead }: LeadProps) => {
   const statusNames: { [key: number]: string[] } = {
@@ -23,9 +26,61 @@ const CardLead = ({ lead }: LeadProps) => {
   const backgroundColor = colorStyles['background_status_' + status_eng];
   const color = colorStyles['color_status_' + status_eng];
 
+  const [comment, setComment] = useState('');
+  const [info, setInfo] = useState<string | null>(null);
+  const [comments, setComments] = useState(lead.comments || []);
+  const router = useRouter();
+
+  const addComment = async (event: FormEvent) => {
+    event.preventDefault();
+
+    if (comment.trim() === '') {
+      setInfo('Комментарий не может быть пустым');
+      return;
+    }
+
+    const res = await fetch('/api/comment/save', {
+      method: 'POST',
+      body: JSON.stringify({ lead_id: lead.id, comment }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (res.status === 401) {
+      router.push('/login');
+      return;
+    }
+
+    if (res.ok) {
+      const data = await res.json();
+      setComments([...comments, data.comment]);
+      setComment('');
+
+      // Скролл вниз
+      setTimeout(() => {
+        if (textRef.current) {
+          textRef.current.scrollTop = textRef.current.scrollHeight;
+        }
+      }, 0);
+    } else {
+    }
+  };
+
+  const textRef = useRef<HTMLDivElement>(null);
+  const prevCommentsLength = useRef(comments.length);
+
+  useEffect(() => {
+    const wasAdded = comments.length > prevCommentsLength.current;
+
+    if (wasAdded && textRef.current) {
+      textRef.current.scrollTop = textRef.current.scrollHeight;
+    }
+
+    prevCommentsLength.current = comments.length;
+  }, [comments]);
+
   return (
     <div className={styles.card + ' ' + borderColor}>
-      <div className={styles.text}>
+      <div className={styles.text} ref={textRef}>
         <div className={styles.nameAndPhone}>
           <div className={styles.text_elem}>
             <span>Имя клиента:</span>
@@ -44,12 +99,17 @@ const CardLead = ({ lead }: LeadProps) => {
 
         <div className={styles.text_elem}>
           <span>Комментарии:</span>
-          {lead.comments &&
-            lead.comments.map((comment, index) => {
-              return <p key={index}>{comment}</p>; // Используйте уникальный ключ
-            })}
+          <div className={styles.comments}>
+            {comments.map((comment) => (
+              <p key={comment.id}>
+                {comment.is_manager ? <i>-Менеджер:</i> : <i>-Я:</i>} {comment.text}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
+
+      <CommentAdd comment={comment} setComment={setComment} addComment={addComment} info={info} />
 
       <div className={styles.dates}>
         <div className={styles.text_elem}>

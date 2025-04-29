@@ -23,8 +23,6 @@ const FormAddLead = () => {
   const router = useRouter();
   const [info, setInfo] = useState('');
 
-  console.log(formData.services);
-
   // Мемоизация обработчиков
   const handleChange = useCallback(
     (field: keyof typeof formData) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,7 +119,7 @@ const FormAddLead = () => {
 
       <p className={styles.info}>{info}</p>
 
-      <Button className={styles.button} color="green" onClick={() => console.log(formData)}>
+      <Button className={styles.button} color="green">
         Создать заявку
       </Button>
     </form>
