@@ -31,4 +31,5 @@ interface statisticI {
   referrals: number;
   shipping: number;
   total: number;
+  start_date: string;
 }

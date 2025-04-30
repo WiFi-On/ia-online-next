@@ -11,9 +11,10 @@
   gap: 10px;
   justify-content: space-between;
   align-items: center;
+  width: 170px;
 
   font-weight: 500;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .select span {

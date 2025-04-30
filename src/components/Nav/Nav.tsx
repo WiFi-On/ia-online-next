@@ -1,12 +1,12 @@
-import styles from "./Nav.module.css";
-import { NavProps } from "@/interfaces/Nav/Nav.interfaces";
+import styles from './Nav.module.css';
+import { NavProps } from '@/interfaces/Nav/Nav.interfaces';
 
-const Nav = ({ text, imgPath, name = "default" }: NavProps) => {
+const Nav = ({ text, imgPath, name = 'default' }: NavProps) => {
   return (
-    <div className={styles.main + " " + styles[name]}>
+    <a href="https://t.me/iaonlineru" className={styles.main + ' ' + styles[name]}>
       <span>{text}</span>
       <img src={imgPath} alt="" />
-    </div>
+    </a>
   );
 };
 

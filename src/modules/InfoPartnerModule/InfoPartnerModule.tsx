@@ -47,6 +47,7 @@ const InfoPartnerModule = () => {
     <div className={styles.main}>
       <div className={styles.statisticsAndUserInfo}>
         <Statistics
+          startDate={infoProfile.statistic.start_date}
           totalPay={infoProfile.statistic.total}
           internetPay={infoProfile.statistic.internet}
           cleaningPay={infoProfile.statistic.cleaning}

@@ -4,4 +4,5 @@ export interface StatisticsI {
   cleaningPay: number;
   movingPay: number;
   referralsPay: number;
+  startDate: string;
 }
