@@ -6,7 +6,7 @@
   margin: 0 10% 50px 10%;
   height: 70vh;
 
-  background-image: url("/imgs/Greetings/greetings.webp");
+  background-image: url('/imgs/Greetings/greetings.webp');
   background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
@@ -87,7 +87,7 @@
 
   .main {
     height: 70vh;
-    margin: 30px 10%;
+    margin: 0px 10% 30px 10%;
     justify-content: space-between;
   }
 
